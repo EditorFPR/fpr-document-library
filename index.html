@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FPR Document Library — Fiji Political Review</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --languid-blue: #8DB4C7;
+    --chinese-black: #1C1C1A;
+    --warm-white: #FDFAF6;
+    --harvest-gold: #DA9100;
+    --mid-grey: #6B6B69;
+    --light-grey: #E8E4DF;
+    --card-bg: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--warm-white);
+    color: var(--chinese-black);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--languid-blue);
+    padding: 0 2rem;
+  }
+
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+  }
+
+  .site-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--chinese-black);
+    text-decoration: none;
+  }
+
+  .header-right {
+    font-size: 0.75rem;
+    color: var(--chinese-black);
+    opacity: 0.7;
+    font-style: italic;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--chinese-black);
+    border-bottom: 3px solid var(--harvest-gold);
+    padding: 3.5rem 2rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--harvest-gold);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .hero h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--warm-white);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    max-width: 700px;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    color: rgba(253,250,246,0.7);
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-note {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--harvest-gold);
+    border: 1px solid rgba(218,145,0,0.4);
+    padding: 0.4rem 0.9rem;
+    border-radius: 2px;
+    font-style: italic;
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--light-grey);
+    border-bottom: 1px solid #D4CFC9;
+    padding: 0.8rem 2rem;
+  }
+
+  .stats-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .stat-number {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.1rem;
+    color: var(--harvest-gold);
+    font-weight: 700;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--mid-grey);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 1.2rem;
+    background: #C8C4BE;
+  }
+
+  /* CONTROLS */
+  .controls {
+    padding: 1.5rem 2rem;
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--light-grey);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .controls-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .search-box {
+    flex: 1;
+    min-width: 220px;
+    position: relative;
+  }
+
+  .search-box input {
+    width: 100%;
+    padding: 0.6rem 1rem 0.6rem 2.5rem;
+    border: 1px solid #C8C4BE;
+    background: white;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.875rem;
+    color: var(--chinese-black);
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-box input:focus { border-color: var(--languid-blue); }
+
+  .search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--mid-grey);
+    font-size: 0.85rem;
+    pointer-events: none;
+  }
+
+  .filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 0.45rem 1rem;
+    border: 1px solid #C8C4BE;
+    background: transparent;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--mid-grey);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--languid-blue);
+    color: var(--chinese-black);
+  }
+
+  .filter-btn.active {
+    background: var(--chinese-black);
+    border-color: var(--chinese-black);
+    color: var(--warm-white);
+  }
+
+  /* MAIN CONTENT */
+  .main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid-grey);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--light-grey);
+  }
+
+  /* DOCUMENT CARDS */
+  .documents-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .doc-card {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--light-grey);
+    transition: background 0.15s;
+    cursor: default;
+  }
+
+  .doc-card:first-child { border-top: 1px solid var(--light-grey); }
+
+  .doc-card:hover { background: rgba(141,180,199,0.05); }
+
+  .doc-card.hidden { display: none; }
+
+  /* Category pill */
+  .doc-category {
+    margin-top: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 80px;
+  }
+
+  .category-pill {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  .cat-constitutional { background: rgba(141,180,199,0.2); color: #3A6E82; }
+  .cat-legislative { background: rgba(218,145,0,0.15); color: #8B6200; }
+  .cat-judicial { background: rgba(28,28,26,0.1); color: #4A4A48; }
+  .cat-policy { background: rgba(80,160,120,0.15); color: #2D7A58; }
+  .cat-international { background: rgba(120,80,160,0.15); color: #5A3A8A; }
+
+  .doc-year {
+    font-size: 0.7rem;
+    color: var(--mid-grey);
+    font-weight: 300;
+  }
+
+  /* Doc body */
+  .doc-body {}
+
+  .doc-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.05rem;
+    color: var(--chinese-black);
+    margin-bottom: 0.35rem;
+    line-height: 1.3;
+  }
+
+  .doc-meta {
+    font-size: 0.75rem;
+    color: var(--mid-grey);
+    margin-bottom: 0.6rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .doc-meta span { display: flex; align-items: center; gap: 0.3rem; }
+
+  .doc-summary {
+    font-size: 0.875rem;
+    color: #4A4A48;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    max-width: 680px;
+  }
+
+  .doc-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .doc-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--mid-grey);
+    border: 1px solid #D4CFC9;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+  }
+
+  /* Doc action */
+  .doc-action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    min-width: 110px;
+    margin-top: 0.2rem;
+  }
+
+  .btn-access {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    background: var(--chinese-black);
+    color: var(--warm-white);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .btn-access:hover { background: var(--harvest-gold); color: var(--chinese-black); }
+
+  .doc-filesize {
+    font-size: 0.65rem;
+    color: var(--mid-grey);
+  }
+
+  .fpr-note {
+    display: inline-block;
+    font-size: 0.65rem;
+    color: var(--harvest-gold);
+    background: rgba(218,145,0,0.08);
+    border: 1px solid rgba(218,145,0,0.25);
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+    font-style: italic;
+    white-space: nowrap;
+  }
+
+  /* NO RESULTS */
+  .no-results {
+    padding: 3rem 0;
+    text-align: center;
+    color: var(--mid-grey);
+    font-style: italic;
+    display: none;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--chinese-black);
+    padding: 2rem;
+    margin-top: 4rem;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-brand {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 0.8rem;
+    color: var(--warm-white);
+    opacity: 0.7;
+  }
+
+  .footer-note {
+    font-size: 0.7rem;
+    color: rgba(253,250,246,0.4);
+    max-width: 500px;
+    line-height: 1.5;
+    text-align: right;
+  }
+
+  @media (max-width: 700px) {
+    .doc-card { grid-template-columns: 1fr; }
+    .doc-category { flex-direction: row; min-width: auto; }
+    .doc-action { align-items: flex-start; }
+    .footer-note { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="site-name" href="https://fijipoliticalreview.com">Fiji Political Review</a>
+    <span class="header-right">Independent analysis since 2026</span>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">FPR Document Library</div>
+    <h1>Primary sources for Fiji's constitutional moment</h1>
+    <p class="hero-desc">Every significant document in Fiji's current political and constitutional debate, collected and summarised in one place. All links go to primary sources — government, Parliament or official bodies.</p>
+    <span class="hero-note">Updated continuously — last updated May 2026</span>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <span class="stat-number" id="total-count">6</span>
+      <span class="stat-label">Documents</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-number">5</span>
+      <span class="stat-label">Categories</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-number">2</span>
+      <span class="stat-label">FPR Annotated</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-number">0</span>
+      <span class="stat-label">Paywalled</span>
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="controls-inner">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" placeholder="Search documents…" oninput="filterDocs()">
+    </div>
+    <div class="filter-buttons">
+      <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+      <button class="filter-btn" onclick="setFilter('constitutional', this)">Constitutional</button>
+      <button class="filter-btn" onclick="setFilter('legislative', this)">Legislative</button>
+      <button class="filter-btn" onclick="setFilter('judicial', this)">Judicial</button>
+      <button class="filter-btn" onclick="setFilter('policy', this)">Policy</button>
+      <button class="filter-btn" onclick="setFilter('international', this)">International</button>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="section-label" id="results-label">Showing all 6 documents</div>
+
+  <div class="documents-grid" id="docs-grid">
+
+    <!-- DOCUMENT 1 -->
+    <div class="doc-card" data-category="constitutional" data-title="constitution of the republic of fiji 2013" data-tags="constitution 2013 chapter rights">
+      <div class="doc-category">
+        <span class="category-pill cat-constitutional">Constitutional</span>
+        <span class="doc-year">2013</span>
+      </div>
+      <div class="doc-body">
+        <div class="doc-title">Constitution of the Republic of Fiji (2013)</div>
+        <div class="doc-meta">
+          <span>📄 Issuing body: Government of Fiji</span>
+          <span>📅 In force: 7 September 2013</span>
+        </div>
+        <div class="doc-summary">Fiji's supreme law. Imposed by decree following the 2006 coup, it has operated as the effective constitutional framework through three elections. Amended by the Supreme Court's advisory opinion of August 2025, which confirmed its legal validity and read down the amendment threshold at section 160. All 12 chapters annotated by the FPR.</div>
+        <div class="doc-tags">
+          <span class="doc-tag">Bill of Rights</span>
+          <span class="doc-tag">Chapter 10</span>
+          <span class="doc-tag">Chapter 11</span>
+          <span class="doc-tag">Amendment procedure</span>
+          <span class="doc-tag">CRC Review</span>
+        </div>
+      </div>
+      <div class="doc-action">
+        <a class="btn-access" href="https://www.laws.gov.fj/Acts/DisplayAct/3062" target="_blank" rel="noopener">↗ Access</a>
+        <span class="fpr-note">FPR Annotated</span>
+      </div>
+    </div>
+
+    <!-- DOCUMENT 2 -->
+    <div class="doc-card" data-category="judicial" data-title="supreme court advisory opinion 2025 fjsc 20 constitution amendment section 159 160" data-tags="supreme court advisory opinion referendum amendment">
+      <div class="doc-category">
+        <span class="category-pill cat-judicial">Judicial</span>
+        <span class="doc-year">2025</span>
+      </div>
+      <div class="doc-body">
+        <div class="doc-title">Supreme Court Advisory Opinion — Sections 159 and 160 of the Constitution [2025] FJSC 20</div>
+        <div class="doc-meta">
+          <span>📄 Issuing body: Supreme Court of Fiji</span>
+          <span>📅 29 August 2025</span>
+        </div>
+        <div class="doc-summary">Landmark Cabinet-referred advisory opinion. The Court confirmed the 2013 Constitution as legally effective despite its undemocratic origins, and read down the amendment threshold at section 160(6) — replacing the near-impossible requirement of three-quarters of all registered voters with a simple majority of votes cast. Constitutional reform is now legally achievable. Cited as Miscellaneous 1 of 2025.</div>
+        <div class="doc-tags">
+          <span class="doc-tag">Section 159</span>
+          <span class="doc-tag">Section 160</span>
+          <span class="doc-tag">Referendum threshold</span>
+          <span class="doc-tag">Constitutional validity</span>
+          <span class="doc-tag">CRC Review</span>
+        </div>
+      </div>
+      <div class="doc-action">
+        <a class="btn-access" href="https://www.paclii.org/fj/cases/FJSC/2025/20.html" target="_blank" rel="noopener">↗ Access</a>
+      </div>
+    </div>
+
+    <!-- DOCUMENT 3 -->
+    <div class="doc-card" data-category="legislative" data-title="national referendum bill 2025 bill no 46 referendum constitution" data-tags="referendum bill parliament legislation">
+      <div class="doc-category">
+        <span class="category-pill cat-legislative">Legislative</span>
+        <span class="doc-year">2025</span>
+      </div>
+      <div class="doc-body">
+        <div class="doc-title">National Referendum Bill 2025 (Bill No. 46 of 2025)</div>
+        <div class="doc-meta">
+          <span>📄 Issuing body: Parliament of Fiji</span>
+          <span>📅 Tabled: 4 December 2025</span>
+        </div>
+        <div class="doc-summary">The government's proposed legal framework for conducting national referendums, including any future constitutional referendum. Sections 22 and 23 have drawn sustained criticism from civil society, legal experts and opposition parties for banning campaign materials and doorstep canvassing during the referendum period. Before the Standing Committee on Justice, Law and Human Rights as of early 2026.</div>
+        <div class="doc-tags">
+          <span class="doc-tag">Referendum framework</span>
+          <span class="doc-tag">Civil liberties</span>
+          <span class="doc-tag">Section 22</span>
+          <span class="doc-tag">Section 23</span>
+          <span class="doc-tag">Standing Committee</span>
+        </div>
+      </div>
+      <div class="doc-action">
+        <a class="btn-access" href="https://www.parliament.gov.fj/wp-content/uploads/2025/12/Bill-No.-46-National-Referendum-Bill-2025-pdf.pdf" target="_blank" rel="noopener">↗ Access</a>
+        <span class="fpr-note">FPR Analysed</span>
+      </div>
+    </div>
+
+    <!-- DOCUMENT 4 -->
+    <div class="doc-card" data-category="policy" data-title="FELRC report fiji electoral and local government reform commission suppressed" data-tags="FELRC electoral reform local government report">
+      <div class="doc-category">
+        <span class="category-pill cat-policy">Policy</span>
+        <span class="doc-year">2024</span>
+      </div>
+      <div class="doc-body">
+        <div class="doc-title">Fiji Electoral and Local Government Reform Commission (FELRC) — Final Report</div>
+        <div class="doc-meta">
+          <span>📄 Issuing body: Government of Fiji</span>
+          <span>📅 Completed: 2024 — withheld from public release</span>
+        </div>
+        <div class="doc-summary">The FELRC completed its report on electoral and local government reform but the government has withheld it from public release. Professor Wadan Narsey wrote for the FPR that this suppression is a governance failure — the Commission's findings directly bear on constitutional reform and the 2026 election. No primary source link available; document has not been publicly released.</div>
+        <div class="doc-tags">
+          <span class="doc-tag">Electoral reform</span>
+          <span class="doc-tag">Local government</span>
+          <span class="doc-tag">Suppressed</span>
+          <span class="doc-tag">Governance</span>
+        </div>
+      </div>
+      <div class="doc-action">
+        <span style="font-size:0.72rem; color: var(--mid-grey); font-style:italic; text-align:right; line-height:1.4;">Not publicly<br>released</span>
+      </div>
+    </div>
+
+    <!-- DOCUMENT 5 -->
+    <div class="doc-card" data-category="international" data-title="pacific resilience facility PRF treaty ratification Fiji parliament" data-tags="PRF pacific resilience facility climate grants forum">
+      <div class="doc-category">
+        <span class="category-pill cat-international">International</span>
+        <span class="doc-year">2026</span>
+      </div>
+      <div class="doc-body">
+        <div class="doc-title">Pacific Resilience Facility (PRF) — Establishment Agreement</div>
+        <div class="doc-meta">
+          <span>📄 Issuing body: Pacific Islands Forum</span>
+          <span>📅 Ratified by Fiji Parliament: 30 April 2026</span>
+        </div>
+        <div class="doc-summary">The PRF is the Pacific's first member-owned regional financing institution, delivering grants for climate adaptation, disaster preparedness and resilience. Fiji's Parliament unanimously ratified the PRF Establishment Agreement on 30 April 2026 — the first significant cross-party vote of the current parliamentary term. The PRF aims to disburse its first grants in early 2027 following its inaugural call for proposals at the 55th Forum Leaders' Meeting in Palau.</div>
+        <div class="doc-tags">
+          <span class="doc-tag">Climate finance</span>
+          <span class="doc-tag">Pacific Islands Forum</span>
+          <span class="doc-tag">Grants</span>
+          <span class="doc-tag">Ratified unanimously</span>
+        </div>
+      </div>
+      <div class="doc-action">
+        <span style="font-size:0.72rem; color: var(--mid-grey); font-style:italic; text-align:right; line-height:1.4;">Agreement text<br>not yet public</span>
+      </div>
+    </div>
+
+    <!-- DOCUMENT 6 -->
+    <div class="doc-card" data-category="constitutional" data-title="CRC constitutional review commission terms of reference 2026 fiji" data-tags="CRC commission review terms reference constitutional">
+      <div class="doc-category">
+        <span class="category-pill cat-constitutional">Constitutional</span>
+        <span class="doc-year">2026</span>
+      </div>
+      <div class="doc-body">
+        <div class="doc-title">Constitutional Review Commission — Terms of Reference (2026)</div>
+        <div class="doc-meta">
+          <span>📄 Issuing body: Government of Fiji</span>
+          <span>📅 Commission reporting by: 31 August 2026</span>
+        </div>
+        <div class="doc-summary">The Constitutional Review Commission (CRC), chaired by Sevuloni Ratumaiyale Valenitabua, is mandated to review the 2013 Constitution and report by 31 August 2026 — 119 days from the date of this library's publication. The FPR has published a CRC Watch Briefing series tracking the Commission's work and has submitted to the Commission on the key constitutional questions it must address.</div>
+        <div class="doc-tags">
+          <span class="doc-tag">CRC</span>
+          <span class="doc-tag">Constitutional review</span>
+          <span class="doc-tag">August 2026</span>
+          <span class="doc-tag">CRC Watch</span>
+        </div>
+      </div>
+      <div class="doc-action">
+        <a class="btn-access" href="https://fijipoliticalreview.com/crc-watch-four-months-to-report/" target="_blank" rel="noopener">↗ FPR Briefing</a>
+        <span class="fpr-note">FPR Tracking</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="no-results" id="no-results">No documents match your search.</div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Fiji Political Review — Document Library</div>
+    <div class="footer-note">All documents link to primary sources — government, Parliament or official bodies. The FPR does not host copies of documents. Links verified May 2026. Report broken links to editor@fijipoliticalreview.com</div>
+  </div>
+</footer>
+
+<script>
+  let activeFilter = 'all';
+
+  function setFilter(cat, btn) {
+    activeFilter = cat;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filterDocs();
+  }
+
+  function filterDocs() {
+    const query = document.getElementById('search-input').value.toLowerCase();
+    const cards = document.querySelectorAll('.doc-card');
+    let visible = 0;
+
+    cards.forEach(card => {
+      const matchCat = activeFilter === 'all' || card.dataset.category === activeFilter;
+      const searchText = (card.dataset.title + ' ' + card.dataset.tags + ' ' + card.innerText).toLowerCase();
+      const matchSearch = !query || searchText.includes(query);
+
+      if (matchCat && matchSearch) {
+        card.classList.remove('hidden');
+        visible++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    const label = document.getElementById('results-label');
+    const noResults = document.getElementById('no-results');
+
+    if (visible === 0) {
+      noResults.style.display = 'block';
+      label.textContent = 'No results';
+    } else {
+      noResults.style.display = 'none';
+      const catLabel = activeFilter === 'all' ? 'all' : activeFilter;
+      const searchLabel = query ? ` matching "${query}"` : '';
+      label.textContent = `Showing ${visible} ${visible === 1 ? 'document' : 'documents'}${searchLabel}`;
+    }
+
+    document.getElementById('total-count').textContent = visible;
+  }
+</script>
+
+</body>
+</html>
