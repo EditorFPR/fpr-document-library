@@ -25,7 +25,6 @@
     min-height: 100vh;
   }
 
-  /* HEADER */
   header {
     background: var(--languid-blue);
     padding: 0 2rem;
@@ -57,7 +56,6 @@
     font-style: italic;
   }
 
-  /* HERO */
   .hero {
     background: var(--chinese-black);
     border-bottom: 3px solid var(--harvest-gold);
@@ -65,8 +63,6 @@
     position: relative;
     overflow: hidden;
   }
-
-
 
   .hero-inner {
     max-width: 1100px;
@@ -111,7 +107,6 @@
     font-style: italic;
   }
 
-  /* STATS BAR */
   .stats-bar {
     background: var(--light-grey);
     border-bottom: 1px solid #D4CFC9;
@@ -127,11 +122,7 @@
     flex-wrap: wrap;
   }
 
-  .stat {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
+  .stat { display: flex; align-items: center; gap: 0.5rem; }
 
   .stat-number {
     font-family: 'Libre Baskerville', serif;
@@ -147,13 +138,8 @@
     letter-spacing: 0.05em;
   }
 
-  .stat-divider {
-    width: 1px;
-    height: 1.2rem;
-    background: #C8C4BE;
-  }
+  .stat-divider { width: 1px; height: 1.2rem; background: #C8C4BE; }
 
-  /* CONTROLS */
   .controls {
     padding: 1.5rem 2rem;
     background: var(--warm-white);
@@ -172,11 +158,7 @@
     flex-wrap: wrap;
   }
 
-  .search-box {
-    flex: 1;
-    min-width: 220px;
-    position: relative;
-  }
+  .search-box { flex: 1; min-width: 220px; position: relative; }
 
   .search-box input {
     width: 100%;
@@ -203,11 +185,7 @@
     pointer-events: none;
   }
 
-  .filter-buttons {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
+  .filter-buttons { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
   .filter-btn {
     padding: 0.45rem 1rem;
@@ -223,23 +201,10 @@
     transition: all 0.2s;
   }
 
-  .filter-btn:hover {
-    border-color: var(--languid-blue);
-    color: var(--chinese-black);
-  }
+  .filter-btn:hover { border-color: var(--languid-blue); color: var(--chinese-black); }
+  .filter-btn.active { background: var(--chinese-black); border-color: var(--chinese-black); color: var(--warm-white); }
 
-  .filter-btn.active {
-    background: var(--chinese-black);
-    border-color: var(--chinese-black);
-    color: var(--warm-white);
-  }
-
-  /* MAIN CONTENT */
-  .main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
+  .main { max-width: 1100px; margin: 0 auto; padding: 2rem; }
 
   .section-label {
     font-size: 0.7rem;
@@ -251,12 +216,7 @@
     border-bottom: 1px solid var(--light-grey);
   }
 
-  /* DOCUMENT CARDS */
-  .documents-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
+  .documents-grid { display: flex; flex-direction: column; gap: 0; }
 
   .doc-card {
     display: grid;
@@ -270,12 +230,9 @@
   }
 
   .doc-card:first-child { border-top: 1px solid var(--light-grey); }
-
   .doc-card:hover { background: rgba(141,180,199,0.05); }
-
   .doc-card.hidden { display: none; }
 
-  /* Category pill */
   .doc-category {
     margin-top: 0.2rem;
     display: flex;
@@ -302,14 +259,7 @@
   .cat-policy { background: rgba(80,160,120,0.15); color: #2D7A58; }
   .cat-international { background: rgba(120,80,160,0.15); color: #5A3A8A; }
 
-  .doc-year {
-    font-size: 0.7rem;
-    color: var(--mid-grey);
-    font-weight: 300;
-  }
-
-  /* Doc body */
-  .doc-body {}
+  .doc-year { font-size: 0.7rem; color: var(--mid-grey); font-weight: 300; }
 
   .doc-title {
     font-family: 'Libre Baskerville', serif;
@@ -338,11 +288,7 @@
     max-width: 680px;
   }
 
-  .doc-tags {
-    display: flex;
-    gap: 0.4rem;
-    flex-wrap: wrap;
-  }
+  .doc-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
 
   .doc-tag {
     font-size: 0.65rem;
@@ -354,7 +300,6 @@
     border-radius: 2px;
   }
 
-  /* Doc action */
   .doc-action {
     display: flex;
     flex-direction: column;
@@ -384,10 +329,7 @@
 
   .btn-access:hover { background: var(--harvest-gold); color: var(--chinese-black); }
 
-  .doc-filesize {
-    font-size: 0.65rem;
-    color: var(--mid-grey);
-  }
+  .doc-filesize { font-size: 0.65rem; color: var(--mid-grey); }
 
   .fpr-note {
     display: inline-block;
@@ -401,7 +343,6 @@
     white-space: nowrap;
   }
 
-  /* NO RESULTS */
   .no-results {
     padding: 3rem 0;
     text-align: center;
@@ -410,12 +351,7 @@
     display: none;
   }
 
-  /* FOOTER */
-  footer {
-    background: var(--chinese-black);
-    padding: 2rem;
-    margin-top: 4rem;
-  }
+  footer { background: var(--chinese-black); padding: 2rem; margin-top: 4rem; }
 
   .footer-inner {
     max-width: 1100px;
@@ -427,12 +363,7 @@
     gap: 1rem;
   }
 
-  .footer-brand {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 0.8rem;
-    color: var(--warm-white);
-    opacity: 0.7;
-  }
+  .footer-brand { font-family: 'Libre Baskerville', serif; font-size: 0.8rem; color: var(--warm-white); opacity: 0.7; }
 
   .footer-note {
     font-size: 0.7rem;
@@ -514,7 +445,6 @@
 
   <div class="documents-grid" id="docs-grid">
 
-    <!-- DOCUMENT 1 -->
     <div id="constitution-2013" class="doc-card" data-category="constitutional" data-title="constitution of the republic of fiji 2013" data-tags="constitution 2013 chapter rights">
       <div class="doc-category">
         <span class="category-pill cat-constitutional">Constitutional</span>
@@ -536,12 +466,11 @@
         </div>
       </div>
       <div class="doc-action">
-        <a class="btn-access" href="https://www.laws.gov.fj/Acts/DisplayAct/3062" target="_blank" rel="noopener">↗ Access</a>
-        <span class="fpr-note">FPR Annotated</span>
+        <a class="btn-access" href="https://www.laws.gov.fj/ResourceFile/Get/?fileName=2013%20Constitution%20of%20Fiji%20(English).pdf" target="_blank" rel="noopener">↗ Primary source</a>
+        <a class="btn-access" href="https://editorfpr.github.io/fpr-constitution/" target="_blank" rel="noopener" style="background:#2a5298;">↗ FPR Annotated</a>
       </div>
     </div>
 
-    <!-- DOCUMENT 2 -->
     <div id="supreme-court-2025" class="doc-card" data-category="judicial" data-title="supreme court advisory opinion 2025 fjsc 20 constitution amendment section 159 160" data-tags="supreme court advisory opinion referendum amendment">
       <div class="doc-category">
         <span class="category-pill cat-judicial">Judicial</span>
@@ -567,7 +496,6 @@
       </div>
     </div>
 
-    <!-- DOCUMENT 3 -->
     <div id="referendum-bill-2025" class="doc-card" data-category="legislative" data-title="national referendum bill 2025 bill no 46 referendum constitution" data-tags="referendum bill parliament legislation">
       <div class="doc-category">
         <span class="category-pill cat-legislative">Legislative</span>
@@ -594,7 +522,6 @@
       </div>
     </div>
 
-    <!-- DOCUMENT 4 -->
     <div class="doc-card" data-category="policy" data-title="FELRC report fiji electoral and local government reform commission suppressed" data-tags="FELRC electoral reform local government report">
       <div class="doc-category">
         <span class="category-pill cat-policy">Policy</span>
@@ -619,7 +546,6 @@
       </div>
     </div>
 
-    <!-- DOCUMENT 5 -->
     <div id="prf-2026" class="doc-card" data-category="international" data-title="pacific resilience facility PRF treaty ratification Fiji parliament" data-tags="PRF pacific resilience facility climate grants forum">
       <div class="doc-category">
         <span class="category-pill cat-international">International</span>
@@ -644,7 +570,6 @@
       </div>
     </div>
 
-    <!-- DOCUMENT 6 -->
     <div class="doc-card" data-category="constitutional" data-title="CRC constitutional review commission terms of reference 2026 fiji" data-tags="CRC commission review terms reference constitutional">
       <div class="doc-category">
         <span class="category-pill cat-constitutional">Constitutional</span>
@@ -719,7 +644,6 @@
       label.textContent = 'No results';
     } else {
       noResults.style.display = 'none';
-      const catLabel = activeFilter === 'all' ? 'all' : activeFilter;
       const searchLabel = query ? ` matching "${query}"` : '';
       label.textContent = `Showing ${visible} ${visible === 1 ? 'document' : 'documents'}${searchLabel}`;
     }
